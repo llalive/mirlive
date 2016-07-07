@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">МИР LIVE</string>
+    <string name="play_btn_text">Прямой эфир</string>
+    <string name="logo_text_1">МИР</string>
+    <string name="logo_text_2">live</string>
+    <string name="main_logo_desc">Логотип МИР</string>
+    <string name="channel_logo_desc">channel logo</string>
+    <string name="back_btn_text">Назад</string>
+    <string name="radio_listen">РАДИО \"МИР\"</string>
+    <string name="radio_title_2">МИР</string>
+    <string name="radio_title_1">Радио</string>
+    <string name="default_radio_meta">Вы слушаете - радио "МИР"</string>
+    <string name="close_btn_desc">button to close video view</string>
+</resources>
