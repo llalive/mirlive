@@ -3,7 +3,6 @@ package tv.mir24.mirlive;
 import android.app.Activity;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,7 +16,6 @@ import android.widget.TextView;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class RadioActivity extends Activity {
@@ -73,6 +71,7 @@ public class RadioActivity extends Activity {
 
     private void playRadio(String url) {
         mediaPlayer = new MediaPlayer();
+        setVolumeControlStream(AudioManager.STREAM_MUSIC);
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
@@ -142,6 +141,8 @@ public class RadioActivity extends Activity {
 
     class SongUpdateTask extends AsyncTask<Void, Void, Void> {
 
+        String meta = "Вы слушаете - радио \"МИР\"";
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -149,7 +150,7 @@ public class RadioActivity extends Activity {
 
         @Override
         protected Void doInBackground(Void... params) {
-            final String meta = getCurrentSong();
+            meta = getCurrentSong();
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -180,25 +181,27 @@ public class RadioActivity extends Activity {
 
     private static String getCurrentSong() {
         String meta = "Вы слушаете - радио \"МИР\"";
-        URL yahoo = null;
-        try {
-            yahoo = new URL("http://data.radiomir.fm/metadata");
-        } catch (MalformedURLException e) {}
+        Log.d("Info", "current song get start");
+        URL url = null;
         BufferedReader in = null;
         try {
+            url = new URL("http://data.radiomir.fm/metadata");
             in = new BufferedReader(
                     new InputStreamReader(
-                            yahoo.openStream()));
-            meta = "";
-            while (in.ready()) {
-                meta = meta.concat(in.readLine());
-            }
-        } catch (IOException e) {}
+                            url.openStream()));
+            if(in.ready()) meta = in.readLine();
+        }
+        catch (Exception e) {
+            Log.d("ERROR", meta + " " + e.getMessage());
+            e.printStackTrace();
+        }
         finally {
             if(in != null) try {
                 in.close();
             } catch (IOException e) {}
+
         }
+        Log.d("Info", "current song got - " + meta);
         return meta;
     }
 
