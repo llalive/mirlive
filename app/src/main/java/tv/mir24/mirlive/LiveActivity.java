@@ -6,6 +6,8 @@ import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.SurfaceHolder;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -44,14 +46,17 @@ public class LiveActivity extends Activity {
             mediaControls = new CustomMediaController(LiveActivity.this, closeBtn);
         }
 
+        mediaControls.setAnchorView(videoView);
         videoView = (VideoView) findViewById(R.id.videoView);
         videoView.setMediaController(mediaControls);
         try {
-            videoView.setVideoURI(Uri.parse(i.getStringExtra("liveUrl")));
+            String streamUrl = i.getStringExtra("liveUrl");
+            videoView.setVideoURI(Uri.parse(streamUrl));
         }
-        catch (Exception e){}
+        catch (Exception e){
+            e.printStackTrace();
+        }
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-
             @Override
             public void onPrepared(MediaPlayer mp) {
                 videoView.start();

@@ -11,4 +11,8 @@
     <string name="radio_title_1">Радио</string>
     <string name="default_radio_meta">Вы слушаете - радио "МИР"</string>
     <string name="close_btn_desc">button to close video view</string>
+    <string name="image_of_empty_logo">image of empty logo</string>
+    <string name="radio_play_btn">radio_play_btn</string>
+    <string name="about_btn_text">О канале</string>
+    <string name="whatch_now_text">СМОТРЕТЬ</string>
 </resources>
