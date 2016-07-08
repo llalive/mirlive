@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ChannelLayout"
+    android:id="@+id/channelLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:visibility="invisible">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -37,6 +38,7 @@
                 android:fontFamily="@string/abc_font_family_display_4_material"
                 android:layout_toRightOf="@id/inTextLogo">
             </TextView>
+
         </RelativeLayout>
     </ScrollView>
 

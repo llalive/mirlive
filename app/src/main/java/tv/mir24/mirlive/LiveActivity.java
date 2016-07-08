@@ -46,6 +46,7 @@ public class LiveActivity extends Activity {
             mediaControls = new CustomMediaController(LiveActivity.this, closeBtn);
         }
 
+        mediaControls.setAnchorView(videoView);
         videoView = (VideoView) findViewById(R.id.videoView);
         videoView.setMediaController(mediaControls);
         try {
