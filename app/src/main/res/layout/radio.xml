@@ -33,9 +33,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/logo_text_1"
-            android:id="@+id/д"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
+            android:id="@+id/radioTitle1"
             style="@style/LogoText1"/>
 
         <ImageView
@@ -66,7 +64,8 @@
         android:alpha="0.8"
         android:layout_below="@+id/linearLayout2"
         android:layout_alignParentStart="true"
-        android:background="@color/colorPrimaryDark">
+        android:background="@color/colorPrimaryDark"
+        android:id="@+id/frameLayout">
 
         <TextView
             android:layout_width="wrap_content"
@@ -78,32 +77,44 @@
             style="@style/LightTextWithShadow" />
     </FrameLayout>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/emptyLogo"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/empty_logo"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/frameLayout"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/backBtn"
+        android:layout_gravity="center">
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/radioPlayBtn"
-        android:src="@drawable/radio_play_btn"
-        style="@style/Base.Widget.AppCompat.Button.Borderless"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        <ImageView
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:id="@+id/emptyLogo"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/empty_logo"
+            android:contentDescription="@string/image_of_empty_logo" />
 
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/radioLoadingStatus"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:indeterminateDrawable="@drawable/spinner_ring_light"
-        android:indeterminateOnly="true"
-        android:indeterminate="false"
-        android:visibility="invisible" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioPlayBtn"
+            android:src="@drawable/radio_play_btn"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:cropToPadding="false"
+            android:contentDescription="@string/radio_play_btn" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioLoadingStatus"
+            android:indeterminateDrawable="@drawable/spinner_ring_light"
+            android:indeterminateOnly="true"
+            android:indeterminate="false"
+            android:visibility="invisible"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
 
 </RelativeLayout>
